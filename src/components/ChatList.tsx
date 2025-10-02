@@ -5,7 +5,7 @@ import Message from './Message';
 const ChatList = () => {
   const _ctx = useContext(ctx);
   return (
-    <section className='col'>
+    <section className='col messages'>
       {_ctx.prevTexts.map(msg => <Message {...msg}></Message>)}
     </section>
   )

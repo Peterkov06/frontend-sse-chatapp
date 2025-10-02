@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import type { CtxModel } from './data/LoginContextModel'
 import Login from './components/Login';
-import { GetMessages, SendTxt } from './services/APIhandler';
+import { GetMessages, SendTxt, startMessageStream } from './services/APIhandler';
 import type { MessageType } from './components/Message';
 import ChatList from './components/ChatList';
 import SendForm from './components/SendForm';
@@ -14,6 +14,19 @@ function App() {
 
   useEffect(() => {
     GetMessages().then(res => setTexts(res))
+  }, []);
+
+  useEffect(() =>
+  {
+    const source = startMessageStream();
+
+    source.onmessage = (event) =>
+    {
+      const newMessage: MessageType = JSON.parse(event.data);
+      setTexts(prev => [...prev, newMessage] )
+    }
+
+    return () => source.close();
   }, []);
   
   //const 

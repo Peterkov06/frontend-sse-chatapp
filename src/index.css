@@ -39,3 +39,24 @@
   display: flex;
   flex-direction: column;
 }
+
+.messages
+{
+  height: 80vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.sendForm
+{
+  background: gray;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input{
+    font-size: 2rem;
+    height: 3rem;
+  }
+
+}

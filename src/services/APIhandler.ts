@@ -1,7 +1,7 @@
 import type { MessageType } from "../components/Message";
 import type { MessageModel } from "../data/MessageModel";
 
-export const BASE_URL = "https://4kqq873p-3000.euw.devtunnels.ms/"
+export const BASE_URL = import.meta.env.BASE_URL;
 
 export async function GetMessages() 
 {
@@ -25,4 +25,16 @@ export async function SendTxt(data: MessageModel)
         console.log(error)
         return null;;
     }
+}
+
+export function startMessageStream()
+{
+  const source = new EventSource(BASE_URL + "stream");
+
+  source.onerror = (error) =>
+  {
+    console.log(error)
+  }
+
+  return source;
 }
