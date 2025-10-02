@@ -3,6 +3,13 @@
 
 }
 
+.mainCol
+{
+  width: 80%;
+  margin: auto;
+  min-height: 100vh;
+}
+
 *
 {
   margin: 0;
@@ -12,4 +19,23 @@
 
 .hidden{
   display: none;
+}
+
+.loginPopUp
+{
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.row
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.col
+{
+  display: flex;
+  flex-direction: column;
 }
